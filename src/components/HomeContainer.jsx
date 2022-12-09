@@ -1,6 +1,8 @@
 import React from 'react'
 import Delivery from '../img/delivery.png'
 import HeroBg from '../img/heroBg.png'
+// import I1 from '../img/i1.png'
+import { heroData } from '../utils/data'
  const HomeContainer = () => {
      return (
 <section id='home' className='grid grid-cols-1 md:grid-cols-2 gap-2 w-full '>
@@ -15,12 +17,21 @@ import HeroBg from '../img/heroBg.png'
               <p className='text-base text-textColor text-center md:text-left md:w-[80%]'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident sed quisquam sapiente ullam nulla vel, quam totam eum a possimus, doloremque accusantium doloribus numquam perferendis porro itaque dolores iusto ratione.</p>
               <button type='button' className='bg-gradient-to-br from-orange-400 to-orange-500 w-full px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-100 ease-in-out md:w-auto'>Order Now</button>
      </div>
-    <div className='py-2 flex-1 flex items-center'>
+    <div className='py-2 flex-1 flex items-center relative'>
         <img src={HeroBg} alt="hero-bg" className='lg:h-650 h-420 ml-auto w-full lg:w-auto' />
-                 <div className='w-full h-full absolute flex items-center justify-center'>
-                     
-                </div>
-     </div>
+             <div className='w-full h-full absolute top-0 left-0 flex items-center justify-center  py-4 gap-4 flex-wrap fle lg:px-14'>
+                    
+                     {heroData && heroData.map((elm) => {
+                return( <div id={elm.id} className='lg:mw-190  p-4 bg-cardOverlay backdrop-blur-md rounded-3xl flex items-center justify-center flex-col drop-shadow-md'>
+                         <img src={elm.imgSrs} alt="I1" className='w-20 lg:w-40 lg:-mt-20 -mt-10' />
+                     <p className='text-base lg:text-lg font-semibold text-textColor mt-2 lg:mt-4'>{ elm.name}</p>
+                     <p className='text-[12px] lg:text-sm text-lighttextGray font-semibold lg:my-3 my-1'>{ elm.desc}</p>
+                         <p className='text-sm font-semibold text-headingColor'><span className='text-xs text-red-600'>$</span> {elm.price}</p>
+                 </div>)
+            })}
+                    
+         </div>
+    </div>        
 </section>
   )
 }

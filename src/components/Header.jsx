@@ -43,7 +43,7 @@ function Header() {
     }
 
   return (
-      <header className='w-screen fixed z-50  p-3 px-4 md:p-6 md:px-16'>
+      <header className='w-screen fixed z-50  p-3 px-4 md:p-6 md:px-16 bg-primary'>
          {/* desktop navigation */}
           <div className='hidden md:flex h-full w-full items-center justify-between'>
               <Link to="/" className='flex items-center gap-2'>
