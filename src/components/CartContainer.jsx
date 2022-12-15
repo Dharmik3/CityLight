@@ -3,12 +3,27 @@ import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 import { motion } from 'framer-motion';
 import { RiRefreshFill } from 'react-icons/ri'
 import {BiPlus,BiMinus} from 'react-icons/bi'
-
+import { useStateValue } from '../context/StateProvider';
+import {actionType} from '../context/reducer'
 const CartContainer = () => {
+    const [{ cartShow }, dispatch] = useStateValue();
+    const showCart = () => {
+         
+        dispatch(
+            {
+                type: actionType.SET_CART_SHOW,
+                cartShow:!cartShow,
+            }
+        )
+    }
   return (
-      <div className='fixed top-0 right-0 w-full md:w-375 h-screen bg-white drop-shadow-md flex flex-col z-[101]'>
+      <motion.div
+        initial={{opacity:0,x:200}}
+        animate={{opacity:1,x:0}}
+        exit={{opacity:0,x:200}}
+          className='fixed top-0 right-0 w-full md:w-375 h-screen bg-white drop-shadow-md flex flex-col z-[101]'>
           <div className='w-full flex items-center justify-between p-4 cursor-pointer'>
-              <motion.div whileTap={{scale:0.75}}>
+              <motion.div whileTap={{scale:0.75}} onClick={showCart}>
                   <MdOutlineKeyboardBackspace className='text-textColor text-3xl' />
               </motion.div>
                   <p  className='text-textColor text-lg font-semibold'>Cart</p>
@@ -64,7 +79,7 @@ const CartContainer = () => {
                   >Check Out</motion.button>
               </div>
           </div>
-    </div>
+    </motion.div>
   )
 }
 
