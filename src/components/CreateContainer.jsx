@@ -115,7 +115,7 @@ const CreateContainer = () => {
     setImageAsset(null);
     setCalories("");
     setPrice("");
-    setCalories("select Category")
+    setCategory("")
   }
 
   const fetchData = async () => {

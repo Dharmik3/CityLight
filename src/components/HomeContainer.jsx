@@ -25,7 +25,7 @@ import { heroData } from '../utils/data'
                          <img src={elm.imgSrs} alt="I1" className='w-20 lg:w-40 lg:-mt-20 -mt-10' />
                      <p className='text-base lg:text-lg font-semibold text-textColor mt-2 lg:mt-4'>{ elm.name}</p>
                      <p className='text-[12px] lg:text-sm text-lighttextGray font-semibold lg:my-3 my-1'>{ elm.desc}</p>
-                         <p className='text-sm font-semibold text-headingColor'><span className='text-xs text-red-600'>$</span> {elm.price}</p>
+                         <p className='text-sm font-semibold text-headingColor'><span className='text-xs text-red-600'>&#8360;</span> {elm.price}</p>
                  </div>)
             })}
                     
