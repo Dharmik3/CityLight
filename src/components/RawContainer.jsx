@@ -13,7 +13,7 @@ const RawContainer = ({ flag, data, scrollValue }) => {
             ref={rowContainer}
             className={`w-full  gap-3 flex items-center my-12 ${flag ? 'overflow-x-scroll scrollbar-none scroll-smooth' : 'overflow-x-hidden flex-wrap'}`}>
           {data && data.map(item => (
-            <div key={item?.id} className='w-300 min-w-[300px] md:min-w-340 md:w-340 my-12 h-[225px] bg-cardOverlay rounded-lg p-2 hover:drop-shadow-lg backdrop-blur-md flex flex-col items-center justify-between'>
+            <div key={item?.id} className='w-300 min-w-[300px] md:min-w-340 md:w-340  h-[225px] my-12 bg-cardOverlay rounded-lg p-2 hover:drop-shadow-lg backdrop-blur-md flex flex-col items-center justify-between'>
               <div className='w-full flex items-center justify-between'>
                   <motion.img whileHover={{ scale: 1.2 }} src={item?.imageURL} alt=""
                   className='w-40 -mt-8 drop-shadow-2xl' />
