@@ -1,12 +1,15 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 import { motion } from 'framer-motion';
 import { RiRefreshFill } from 'react-icons/ri'
-import {BiPlus,BiMinus} from 'react-icons/bi'
 import { useStateValue } from '../context/StateProvider';
-import {actionType} from '../context/reducer'
+import { actionType } from '../context/reducer'
+import EmptyCart from '../img/emptyCart.svg'
+import CartItem from './CartItem';
 const CartContainer = () => {
-    const [{ cartShow }, dispatch] = useStateValue();
+    const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
+    const [flag, setFlag] = useState(1);
+  const [tot, setTot] = useState(0);
     const showCart = () => {
          
         dispatch(
@@ -16,6 +19,12 @@ const CartContainer = () => {
             }
         )
     }
+    useEffect(() => {
+        let totalPrice = cartItems.reduce(function (accumulator, item) {
+            return accumulator + item.qty * item.price
+        }, 0)
+        setTot(totalPrice);
+    },[tot,flag])
   return (
       <motion.div
         initial={{opacity:0,x:200}}
@@ -30,37 +39,22 @@ const CartContainer = () => {
                   <motion.p whileTap={{scale:0.75}} className='flex items-center gap-2 p-1 my-2 bg-gray-100 rounded-md hover:shadow-md cursor-pointer text-textColor text-base'>Clear<RiRefreshFill/></motion.p>
           </div>
           {/* bottom section */}
-          <div className='w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col'>
+          {cartItems && cartItems.length > 0 ?
+              (
+                   <div className='w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col'>
                {/*cart item section */}
               <div className='w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none'>
                   {/* each  cart item */}
-                  <div className='w-full p-1 px-2 rounded-lg bg-cartItem flex items-center gap-2'>
-                      <img src="https://firebasestorage.googleapis.com/v0/b/restaurant-app-3.appspot.com/o/Images%2F1671092242083-f8.png?alt=media&token=02b7cc64-3b03-4adf-b572-c354b1011080" alt="item image" className='w-20 h-20 max-w-[60px] rounded-full object-contain' />
-
-                      {/* name section */}
-                      <div className='flex flex-col gap-2'>
-                          <p className='text-base text-gray-50'>Cherry</p>
-                          <p className='text-sm block text-gray-300 font-semibold'>&#8360; 120</p>
-                      </div>
-
-                      {/* button section */}
-                      <div className='group flex items-center gap-2 ml-auto cursor-pointer'>
-                          <motion.div whileTap={{scale:0.75}}>
-                              <BiMinus className="text-gray-50"/>
-                          </motion.div>
-                          <p className='w-5 h-5 rounded-sm bg-cartBg text-gray-50 flex items-center justify-center'>1</p>
-                          <motion.div whileTap={{scale:0.75}}>
-                              <BiPlus className="text-gray-50"/>
-                          </motion.div>
-                      </div>
-                  </div>
+                  {cartItems && cartItems.map(item => (
+                      <CartItem key={item.id} item={item} flag={flag} setFlag={setFlag} />
+                  ))}
               </div>
 
               {/* billing section */}
               <div className='w-full flex-1 bg-cartTotal rounded-t-[2rem] flex flex-col items-center justify-evenly px-8 py-2'>
                   <div className='w-full flex items-center justify-between'>
                       <p className='text-gray-400 text-lg'>Sub Total</p>
-                      <p className='text-gray-400 text-lg'>&#8360; 120</p>
+                              <p className='text-gray-400 text-lg'>&#8360; { tot}</p>
                   </div>
                   <div className='w-full flex items-center justify-between'>
                       <p className='text-gray-400 text-lg'>Delivery</p>
@@ -70,15 +64,26 @@ const CartContainer = () => {
                   <div className='w-full border-b border-gray-600 my-2'></div>
                   <div className='w-full flex items-center justify-between'>
                       <p className='text-gray-200 text-xl font-semibold'>Total</p>
-                      <p className='text-gray-200 text-xl font-semibold'>&#8360; 160</p>
+                              <p className='text-gray-200 text-xl font-semibold'>&#8360; { tot + 40}</p>
                   </div>
-                  <motion.button
+                  {user ? (<motion.button
                       whileTap={{ scale: 0.8 }}
                       type="button"
                       className='w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg transition-all duration-150 ease-out'
-                  >Check Out</motion.button>
+                          >Check Out</motion.button>) :
+                              (
+                                  <p className='text-lg bg-orange-400 py-2 px-4 text-gray-50 rounded-full font-semibold'>Please Login to Checkout</p>
+                  )
+                  }
               </div>
           </div>
+              ) : (
+                  <div className='w-full h-full flex flex-col items-center justify-center gap-6'>
+                      <img src={EmptyCart} classNamew-300 alt="cart" />
+                      <p className='text-xl text-textColor font-semibold'>Add some items to cart</p>
+                  </div>
+          )}
+         
     </motion.div>
   )
 }
