@@ -1,8 +1,8 @@
 import React from 'react'
 import Delivery from '../img/delivery.png'
 import HeroBg from '../img/heroBg.png'
-// import I1 from '../img/i1.png'
 import { heroData } from '../utils/data'
+
  const HomeContainer = () => {
      return (
 <section id='home' className='grid grid-cols-1 md:grid-cols-2 gap-2 w-full '>

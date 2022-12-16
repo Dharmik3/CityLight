@@ -6,7 +6,9 @@ import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer'
 import EmptyCart from '../img/emptyCart.svg'
 import CartItem from './CartItem';
+import { fetchCart } from '../utils/fetchLocalStorageData';
 const CartContainer = () => {
+    
     const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
     const [flag, setFlag] = useState(1);
   const [tot, setTot] = useState(0);
@@ -16,6 +18,16 @@ const CartContainer = () => {
             {
                 type: actionType.SET_CART_SHOW,
                 cartShow:!cartShow,
+            }
+        )
+    }
+    const handleClear = () => {
+        localStorage.removeItem('cartItems');
+        const cartInfo = fetchCart()
+        dispatch(
+            {
+                type: actionType.SET_CART_ITEMS,
+                cartItems:cartInfo
             }
         )
     }
@@ -36,14 +48,14 @@ const CartContainer = () => {
                   <MdOutlineKeyboardBackspace className='text-textColor text-3xl' />
               </motion.div>
                   <p  className='text-textColor text-lg font-semibold'>Cart</p>
-                  <motion.p whileTap={{scale:0.75}} className='flex items-center gap-2 p-1 my-2 bg-gray-100 rounded-md hover:shadow-md cursor-pointer text-textColor text-base'>Clear<RiRefreshFill/></motion.p>
+                  <motion.p whileTap={{scale:0.75}} className='flex items-center gap-2 p-1 my-2 bg-gray-100 rounded-md hover:shadow-md cursor-pointer text-textColor text-base' onClick={handleClear}>Clear<RiRefreshFill/></motion.p>
           </div>
           {/* bottom section */}
           {cartItems && cartItems.length > 0 ?
               (
                    <div className='w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col'>
                {/*cart item section */}
-              <div className='w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none'>
+              <div className='w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 1overflow-y-scroll scrollbar-none'>
                   {/* each  cart item */}
                   {cartItems && cartItems.map(item => (
                       <CartItem key={item.id} item={item} flag={flag} setFlag={setFlag} />

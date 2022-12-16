@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer';
 let items=[]
-// import { MdAirlineSeatFlatAngled } from 'react-icons/md';
+
 const CartItem = ({ item,flag,setFlag }) => {
     const [{ cartItems }, dispatch] = useStateValue();
     const [qty, setQty] = useState(item.qty)
