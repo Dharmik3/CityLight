@@ -8,6 +8,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import {app} from '../firebase.config'
 import { useStateValue } from '../context/StateProvider'
 import { actionType } from '../context/reducer'
+import { cart } from '../utils/fetchLocalStorageData'
 
 function Header() {
     const firebaseAuth = getAuth(app);
@@ -23,7 +24,16 @@ function Header() {
             user:providerData[0],
         })
         
-        localStorage.setItem('user',JSON.stringify(providerData[0]))
+            localStorage.setItem('user', JSON.stringify(providerData[0]))
+            cart().then((res) => {
+                 dispatch({
+            type: actionType.SET_CART_ITEMS,
+            cartItems:res
+        }
+        )
+            localStorage.setItem('cartItems',JSON.stringify(res))
+        
+        });
         }
         else {
             setIsMenu(!isMenu)

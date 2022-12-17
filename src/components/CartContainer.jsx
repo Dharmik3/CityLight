@@ -7,6 +7,7 @@ import { actionType } from '../context/reducer'
 import EmptyCart from '../img/emptyCart.svg'
 import CartItem from './CartItem';
 import { fetchCart } from '../utils/fetchLocalStorageData';
+import { deleteUserCart } from '../utils/FirebaseFunctions';
 const CartContainer = () => {
     
     const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
@@ -30,6 +31,9 @@ const CartContainer = () => {
                 cartItems:cartInfo
             }
         )
+        if (user) {
+            deleteUserCart(user.uid);
+        }
     }
     useEffect(() => {
         let totalPrice = cartItems.reduce(function (accumulator, item) {
@@ -55,9 +59,9 @@ const CartContainer = () => {
               (
                    <div className='w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col'>
                {/*cart item section */}
-              <div className='w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 1overflow-y-scroll scrollbar-none'>
+              <div className='w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none'>
                   {/* each  cart item */}
-                  {cartItems && cartItems.map(item => (
+                  { cartItems && cartItems.map(item => (
                       <CartItem key={item.id} item={item} flag={flag} setFlag={setFlag} />
                   ))}
               </div>

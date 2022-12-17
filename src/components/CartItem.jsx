@@ -3,10 +3,11 @@ import { BiPlus, BiMinus } from 'react-icons/bi'
 import { motion } from 'framer-motion';
 import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer';
+import {saveUserCart} from '../utils/FirebaseFunctions'
 let items=[]
 
 const CartItem = ({ item,flag,setFlag }) => {
-    const [{ cartItems }, dispatch] = useStateValue();
+    const [{ cartItems,user }, dispatch] = useStateValue();
     const [qty, setQty] = useState(item.qty)
     const cartDispatch = () => {
         localStorage.setItem('cartItems', JSON.stringify(items));
@@ -16,6 +17,15 @@ const CartItem = ({ item,flag,setFlag }) => {
                 cartItems:items
             }
         )
+        if (user) {
+            const { uid, email } = user;
+        const data = {
+            id: uid,
+            email:email,
+            carts:{items}
+        }
+        saveUserCart(data);
+        }
     }
     const updateQty = (action,id) => {
         if (action == 'add') {

@@ -4,10 +4,23 @@ import {motion} from 'framer-motion'
 import NotFound from '../img/NotFound.svg'
 import { useStateValue } from '../context/StateProvider'
 import { actionType } from '../context/reducer'
+import { cart, fetchCart } from '../utils/fetchLocalStorageData'
+import { getUserCart, saveUserCart } from '../utils/FirebaseFunctions'
 const RawContainer = ({ flag, data, scrollValue }) => {
-    const [{ cartItems }, dispatch] = useStateValue();
+    const [{ cartItems,user }, dispatch] = useStateValue();
     const rowContainer = useRef();
-    const [items, setItems] = useState([])
+    let userCartData=fetchCart();
+    useEffect(() => {
+        
+        cart().then((res) => {
+            console.log('ressss', res)
+            userCartData = res;
+            setItems(userCartData)
+            console.log('usercartdata',userCartData)
+        });
+    },[])
+    const [items, setItems] = useState(userCartData);
+    
     useEffect(() => {
         rowContainer.current.scrollLeft += scrollValue;
     }, [scrollValue])
@@ -18,9 +31,22 @@ const RawContainer = ({ flag, data, scrollValue }) => {
             cartItems:items
         }
         )
-        localStorage.setItem('cartItems',JSON.stringify(items))
+        localStorage.setItem('cartItems', JSON.stringify(items));
+        if (user) {
+            const { uid, email } = user;
+        const data = {
+            id: uid,
+            email:email,
+            carts:{items}
+        }
+        saveUserCart(data);
+        }
+        
     }
     useEffect(() => {
+        
+
+        
         addToCart();
     },[items])
     return (
