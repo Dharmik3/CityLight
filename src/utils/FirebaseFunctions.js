@@ -1,6 +1,4 @@
 // saving new items
-
-import { async } from "@firebase/util";
 import { collection, doc, getDocs, deleteDoc, orderBy, query, setDoc, getDoc } from "firebase/firestore"
 import { firestore } from "../firebase.config"
 

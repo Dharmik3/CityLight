@@ -75,10 +75,18 @@ function Header() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 200 }}
                       className='flex items-center gap-8'>
-                        <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>Home</li>
-                        <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>Menu</li>
-                        <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>About Us</li>
-                        <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>Service</li>
+                      <a href="#home">
+                          <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>Home</li>
+                      </a>
+                      <a href="#menu">
+                          <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>Menu</li>
+                      </a>
+                      <a href="#">
+                          <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>About Us</li>
+                        </a>
+                      <a href="#services">
+                          <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>Service</li>
+                    </a>
                     </motion.ul>
 
                     <div className='relative flex items-center justify-center' onClick={showCart}>
@@ -146,12 +154,21 @@ function Header() {
                               </Link>
                           )}
                     <ul
-                      className='flex flex-col  '>
-                        <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer px-4 py-2' onClick={()=>setIsMenu(false)}>Home</li>
-                        <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer px-4 py-2' onClick={()=>setIsMenu(false)}>Menu</li>
+                              className='flex flex-col  '>
+                    <a href="#">
+                                  <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer px-4 py-2' onClick={() => setIsMenu(false)}>Home</li>
+                              </a>
+                              <a href="#menu">
+                                  <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer px-4 py-2' onClick={() => setIsMenu(false)}>Menu</li>
+                              </a>
+                              <a href="#">
                         <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer px-4 py-2' onClick={()=>setIsMenu(false)}>About Us</li>
-                        <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer px-4 py-2' onClick={()=>setIsMenu(false)}>Service</li>
-                    </ul>
+                        </a>
+                              <a href="#services">
+                                  <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer px-4 py-2' onClick={() => setIsMenu(false)}>Service</li>
+                                  </a>
+                          </ul>
+                          
                           <p className='m-2 p-2 rounded-md shadow-md px-4 py-2 flex items-center gap-3 justify-center bg-gray-200 cursor-pointer hover:bg-slate-300 transition-all duration-100 ease-in-out text-textColor text-base' onClick={logout}>Logout<MdLogout/></p>
                     </motion.div>
                      )}

@@ -1,44 +1,46 @@
 import I1 from '../img/i1.png'
 import F1 from '../img/f1.png'
-import C3 from '../img/c3.png'
-import FI1 from '../img/fi1.png'
+import C3 from '../img/bk1.png'
+import B1 from '../img/b1.png'
 
 export const heroData = [
     {
         id: 1,
         name: 'Icecream',
         desc: 'Chocolate & Vanilla',
-        price: '5.25',
+        price: '85',
         imgSrs: I1
     },
+    
+    
     {
         id: 2,
         name: 'Strawberries',
         desc: 'Fresh Strawberries',
-        price: '10.25',
+        price: '140',
         imgSrs: F1
     },
     {
         id: 3,
-        name: 'Bhaji Pav',
-        desc: 'Mixed Bhaji Pav',
-        price: '8.25',
+        name: 'Donut',
+        desc: 'Pastry Donut',
+        price: '70',
         imgSrs: C3
     },
     {
         id: 4,
-        name: 'Fish Kabab',
-        desc: 'Mixed Fish Kabab',
-        price: '5.25',
-        imgSrs: FI1
+        name: 'Burger',
+        desc: 'Veg Maxican Burger',
+        price: '110',
+        imgSrs: B1
     },
 ]
 
 export const categories = [
     {
         id: 1,
-        name: "Chicken",
-        urlParamName: "chicken",
+        name: "Italian",
+        urlParamName: "italian",
     },
     {
         id: 2,
@@ -52,8 +54,8 @@ export const categories = [
     },
     {
         id: 4,
-        name: "Fish",
-        urlParamName: "fish",
+        name: "Sweets",
+        urlParamName: "sweet",
     },
     {
         id: 5,

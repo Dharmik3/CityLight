@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { HomeContainer,FruitsBar,MenuContainer ,CartContainer} from '../components'
+import { HomeContainer,FruitsBar,MenuContainer ,CartContainer,Footer} from '../components'
 import { useStateValue } from '../context/StateProvider'
 
 const MainContainer = () => {
@@ -10,7 +10,8 @@ const MainContainer = () => {
           <HomeContainer/>
         <FruitsBar/>
       <MenuContainer />
-      {cartShow && <CartContainer/>}
+      {cartShow && <CartContainer />}
+      <Footer/>
     </div>
   )
 }

@@ -5,7 +5,7 @@ import NotFound from '../img/NotFound.svg'
 import { useStateValue } from '../context/StateProvider'
 import { actionType } from '../context/reducer'
 import { cart, fetchCart } from '../utils/fetchLocalStorageData'
-import { getUserCart, saveUserCart } from '../utils/FirebaseFunctions'
+import {  saveUserCart } from '../utils/FirebaseFunctions'
 const RawContainer = ({ flag, data, scrollValue }) => {
     const [{ cartItems,user }, dispatch] = useStateValue();
     const rowContainer = useRef();
@@ -13,10 +13,10 @@ const RawContainer = ({ flag, data, scrollValue }) => {
     useEffect(() => {
         
         cart().then((res) => {
-            console.log('ressss', res)
+       
             userCartData = res;
             setItems(userCartData)
-            console.log('usercartdata',userCartData)
+          
         });
     },[])
     const [items, setItems] = useState(userCartData);
@@ -44,9 +44,6 @@ const RawContainer = ({ flag, data, scrollValue }) => {
         
     }
     useEffect(() => {
-        
-
-        
         addToCart();
     },[items])
     return (

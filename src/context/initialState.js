@@ -1,10 +1,10 @@
-import { async } from "@firebase/util";
-import { cart, fetchCart, fetchUser } from "../utils/fetchLocalStorageData"
-import { getUserCart } from "../utils/FirebaseFunctions"
+
+import { fetchCart, fetchUser } from "../utils/fetchLocalStorageData"
+
 
 const userInfo = fetchUser()
 const cartInfo = fetchCart()
-const carts = cart();
+
 
 
 

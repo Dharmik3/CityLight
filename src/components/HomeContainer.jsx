@@ -21,7 +21,7 @@ import { heroData } from '../utils/data'
         <img src={HeroBg} alt="hero-bg" className='lg:h-650 h-420 ml-auto w-full lg:w-auto' />
              <div className='w-full h-full absolute top-0 left-0 flex items-center justify-center  py-4 gap-4 flex-wrap fle lg:px-14'>  
                      {heroData && heroData.map((elm) => {
-                return( <div key={elm.id} className='lg:mw-190  p-4 bg-cardOverlay backdrop-blur-md rounded-3xl flex items-center justify-center flex-col drop-shadow-md'>
+                return( <div key={elm.id} className='lg:min-w-[150px] lg:min-h-[230px] lg:max-h-[250px] min-w-[148px] min-h-[153px] p-4 bg-cardOverlay backdrop-blur-md rounded-3xl flex items-center justify-center flex-col drop-shadow-md'>
                          <img src={elm.imgSrs} alt="I1" className='w-20 lg:w-40 lg:-mt-20 -mt-10' />
                      <p className='text-base lg:text-lg font-semibold text-textColor mt-2 lg:mt-4'>{ elm.name}</p>
                      <p className='text-[12px] lg:text-sm text-lighttextGray font-semibold lg:my-3 my-1'>{ elm.desc}</p>
