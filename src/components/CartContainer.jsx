@@ -46,8 +46,8 @@ const CartContainer = () => {
         initial={{opacity:0,x:200}}
         animate={{opacity:1,x:0}}
         exit={{opacity:0,x:200}}
-          className='fixed top-0 right-0 w-full md:w-375 h-screen bg-white drop-shadow-md flex flex-col z-[101]'>
-          <div className='w-full flex items-center justify-between p-4 cursor-pointer'>
+          className='fixed top-0 right-0 w-full md:w-375 h-screen bg-white drop-shadow-md flex flex-col z-[101]' id='cart'>
+          <div className='w-full flex items-center justify-between p-4 cursor-pointer' id='cart'>
               <motion.div whileTap={{scale:0.75}} onClick={showCart}>
                   <MdOutlineKeyboardBackspace className='text-textColor text-3xl' />
               </motion.div>
@@ -57,9 +57,9 @@ const CartContainer = () => {
           {/* bottom section */}
           {cartItems && cartItems.length > 0 ?
               (
-                   <div className='w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col'>
+                   <div className='w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col' id='cart'>
                {/*cart item section */}
-              <div className='w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none'>
+              <div className='w-full h-340 md:h-42 px-6 py-10 flex flex-col gap-3 overflow-y-scroll scrollbar-none'id='cart'>
                   {/* each  cart item */}
                   { cartItems && cartItems.map(item => (
                       <CartItem key={item.id} item={item} flag={flag} setFlag={setFlag} />
@@ -67,18 +67,18 @@ const CartContainer = () => {
               </div>
 
               {/* billing section */}
-              <div className='w-full flex-1 bg-cartTotal rounded-t-[2rem] flex flex-col items-center justify-evenly px-8 py-2'>
-                  <div className='w-full flex items-center justify-between'>
+              <div className='w-full flex-1 bg-cartTotal rounded-t-[2rem] flex flex-col items-center justify-evenly px-8 py-2' id='cart'>
+                  <div className='w-full flex items-center justify-between' id='cart'>
                       <p className='text-gray-400 text-lg'>Sub Total</p>
                               <p className='text-gray-400 text-lg'>&#8360; { tot}</p>
                   </div>
-                  <div className='w-full flex items-center justify-between'>
+                  <div className='w-full flex items-center justify-between' id='cart'>
                       <p className='text-gray-400 text-lg'>Delivery</p>
                       <p className='text-gray-400 text-lg'>&#8360; 40</p>
                   </div>
 
                   <div className='w-full border-b border-gray-600 my-2'></div>
-                  <div className='w-full flex items-center justify-between'>
+                  <div className='w-full flex items-center justify-between' id='cart'>
                       <p className='text-gray-200 text-xl font-semibold'>Total</p>
                               <p className='text-gray-200 text-xl font-semibold'>&#8360; { tot + 40}</p>
                   </div>
@@ -94,7 +94,7 @@ const CartContainer = () => {
               </div>
           </div>
               ) : (
-                  <div className='w-full h-full flex flex-col items-center justify-center gap-6'>
+                  <div className='w-full h-full flex flex-col items-center justify-center gap-6' >
                       <img src={EmptyCart} classNamew-300 alt="cart" />
                       <p className='text-xl text-textColor font-semibold'>Add some items to cart</p>
                   </div>

@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { Header,MainContainer,CreateContainer } from "./components";
 import { Route, Routes } from 'react-router-dom'
-import {AnimatePresence} from 'framer-motion'
+import {AnimatePresence, FlatTree} from 'framer-motion'
 import { useStateValue } from "./context/StateProvider";
 import { getAllFoodItems } from "./utils/FirebaseFunctions";
 import { actionType } from "./context/reducer";
 
 
 const App = () => {
-    const [{ foodItems}, dispatch] = useStateValue();
+    const [{ foodItems,cartShow}, dispatch] = useStateValue();
     const fetchData = async () => {
         await getAllFoodItems().then((data) => {
             dispatch({
@@ -17,14 +17,23 @@ const App = () => {
             })
         })
     }
+    const handleDisappearMenu = (e) => {
+        if (cartShow && e.target.parentNode.id !== 'cart') {
+            
+            dispatch({
+                type: actionType.SET_CART_SHOW,
+                cartShow: !cartShow,
+            })
+        }  
+    }
     useEffect(() => {
         fetchData();
     },[])
     return (
-      <AnimatePresence exitBeforeEnter>
-            <div className="w-screen h-auto flex flex-col bg-primary ">
+      <AnimatePresence exitBeforeEnter={false}>
+            <div className="w-screen h-auto flex flex-col bg-primary" >
             <Header />
-            <main className="mt-14  w-full md:mt-20 md:px-16 px-4 pt-4">
+                <main className="mt-14  w-full md:mt-20 md:px-16 px-4 pt-4" onClick={handleDisappearMenu}>
                 <Routes>
                     <Route path="/" element={ <MainContainer/>} />
                     <Route path="/createItem" element={ <CreateContainer/>} />

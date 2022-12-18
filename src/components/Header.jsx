@@ -84,7 +84,7 @@ function Header() {
                       <a href="#">
                           <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>About Us</li>
                         </a>
-                      <a href="#services">
+                      <a href='#'>
                           <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>Service</li>
                     </a>
                     </motion.ul>
