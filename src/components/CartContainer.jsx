@@ -8,6 +8,8 @@ import EmptyCart from '../img/emptyCart.svg'
 import CartItem from './CartItem';
 import { fetchCart } from '../utils/fetchLocalStorageData';
 import { deleteUserCart } from '../utils/FirebaseFunctions';
+import { loadScript } from '../utils/paymentFunctions';
+import Logo from '../img/logo.png'
 const CartContainer = () => {
     
     const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
@@ -40,7 +42,45 @@ const CartContainer = () => {
             return accumulator + item.qty * item.price
         }, 0)
         setTot(totalPrice);
-    },[tot,flag])
+    }, [tot, flag])
+    
+   
+    const processPayment =async (amount) => {
+        const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+        if (!res) {
+            alert('technical glitch');
+            return;
+        }
+        console.log('script is loaded successfully')
+        var options = {
+    "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
+    "amount": parseInt(amount*100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "CityLight",
+    "description": "Test Transaction",
+    "image": Logo,
+   
+    "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+    "prefill": {
+        "name": "Dharmik Patel",
+        "email": "dharmik.patel@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+            },
+    "handler": function (response){
+    alert(response.razorpay_payment_id);
+    alert(response.razorpay_order_id);
+    alert(response.razorpay_signature)}
+};
+        var rzp1 = new window.Razorpay(options);
+         rzp1.open();
+    // e.preventDefault();
+    }
   return (
       <motion.div
         initial={{opacity:0,x:200}}
@@ -86,7 +126,7 @@ const CartContainer = () => {
                       whileTap={{ scale: 0.8 }}
                       type="button"
                       className='w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg transition-all duration-150 ease-out'
-                          >Check Out</motion.button>) :
+                           onClick={()=>processPayment(tot+40)}>Check Out</motion.button>) :
                               (
                                   <p className='text-lg bg-orange-400 py-2 px-4 text-gray-50 rounded-full font-semibold'>Please Login to Checkout</p>
                   )

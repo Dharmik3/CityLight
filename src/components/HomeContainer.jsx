@@ -14,8 +14,10 @@ import { heroData } from '../utils/data'
                   </div>
               </div>
               <p className='text-[2.5rem] font-bold tracking-wide text-headingColor   lg:text-[4.3rem]'>The Fastest Delivery in <span className='text-orange-600 text-[3rem] lg:text-[5rem]'>Your City</span></p>
-              <p className='text-base text-textColor text-center md:text-left md:w-[80%]'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident sed quisquam sapiente ullam nulla vel, quam totam eum a possimus, doloremque accusantium doloribus numquam perferendis porro itaque dolores iusto ratione.</p>
-              <button type='button' className='bg-gradient-to-br from-orange-400 to-orange-500 w-full px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-100 ease-in-out md:w-auto'>Order Now</button>
+                 <p className='text-base text-textColor text-center md:text-left md:w-[80%]'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident sed quisquam sapiente ullam nulla vel, quam totam eum a possimus, doloremque accusantium doloribus numquam perferendis porro itaque dolores iusto ratione.</p>
+                 <a href="#menu">
+                     <button type='button' className='bg-gradient-to-br from-orange-400 to-orange-500 w-full px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-100 ease-in-out md:w-auto'>Order Now</button>
+                     </a>
      </div>
     <div className='py-2 flex-1 flex items-center relative'>
         <img src={HeroBg} alt="hero-bg" className='lg:h-650 h-420 ml-auto w-full lg:w-auto' />

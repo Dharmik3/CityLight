@@ -8,7 +8,7 @@ export const heroData = [
         id: 1,
         name: 'Icecream',
         desc: 'Chocolate & Vanilla',
-        price: '85',
+        price: '95',
         imgSrs: I1
     },
     
@@ -39,7 +39,7 @@ export const heroData = [
 export const categories = [
     {
         id: 1,
-        name: "Italian",
+        name: "Maxican",
         urlParamName: "italian",
     },
     {
