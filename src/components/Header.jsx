@@ -121,9 +121,13 @@ function Header() {
 
 
           {/* phone navigation */}
-          <div className='flex items-center justify-between md:hidden w-full h-full'>
-              
-             {user && <div className='relative flex items-center justify-center  'onClick={showCart}>
+          <div className='flex items-center  justify-between  md:hidden w-full h-full'>
+               <Link to="/" className='flex items-center gap-2'>
+                  <img src={Logo} alt="logo" className='w-8 object-cover' />
+                  <p className='text-headingColor text-xl font-bold'>CityLight</p>
+              </Link>
+              <div className='flex items-center justify-between gap-5'>
+              <div className='relative flex items-center justify-center  'onClick={showCart}>
                         <MdShoppingBasket className='text-textColor text-2xl  cursor-pointer ' />
                          {cartItems && cartItems.length > 0 && (
                             <div className='absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center'>
@@ -131,11 +135,8 @@ function Header() {
                         </div>
                         )}
                     
-              </div>}
-              <Link to="/" className='flex items-center gap-2'>
-                  <img src={Logo} alt="logo" className='w-8 object-cover' />
-                  <p className='text-headingColor text-xl font-bold'>City</p>
-              </Link>
+              </div>
+             
               <div className='relative'>
                       
                       <motion.img whileTap={{ scale: 0.6 }} src={user ? user.photoURL : Avatar} alt="user profile img" className='w-10 min-w-[40px] min-h-[40px] drop-shadow-xl cursor-pointer rounded-full' onClick={login} referrerPolicy="no-referrer"/>
@@ -172,7 +173,8 @@ function Header() {
                           <p className='m-2 p-2 rounded-md shadow-md px-4 py-2 flex items-center gap-3 justify-center bg-gray-200 cursor-pointer hover:bg-slate-300 transition-all duration-100 ease-in-out text-textColor text-base' onClick={logout}>Logout<MdLogout/></p>
                     </motion.div>
                      )}
-                 </div>
+                  </div>
+            </div>
           </div>
       </header>
   )
