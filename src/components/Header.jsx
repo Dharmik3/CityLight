@@ -75,18 +75,18 @@ function Header() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 200 }}
                       className='flex items-center gap-8'>
-                      <a href="#home">
+                      <Link to='/'>
                           <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>Home</li>
-                      </a>
-                      <a href="#menu">
+                      </Link>
+                      <Link to="/">
                           <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>Menu</li>
-                      </a>
-                      <a href="#">
+                      </Link>
+                      <Link to="/">
                           <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>About Us</li>
-                        </a>
-                      <a href='#'>
+                        </Link>
+                      <Link to='/'>
                           <li className='text-base text-textColor duration-100 transition-all ease-in-out hover:text-headingColor cursor-pointer'>Service</li>
-                    </a>
+                    </Link>
                     </motion.ul>
 
                     <div className='relative flex items-center justify-center' onClick={showCart}>
