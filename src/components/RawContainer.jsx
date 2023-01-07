@@ -41,11 +41,14 @@ const RawContainer = ({ flag, data, scrollValue }) => {
         }
         saveUserCart(data);
         }
-        
     }
     useEffect(() => {
         addToCart();
-    },[items])
+    }, [items])
+    
+    const handleCart = (item) => {
+        setItems([...cartItems,item])
+    }
     return (
         
         <div
@@ -59,8 +62,8 @@ const RawContainer = ({ flag, data, scrollValue }) => {
                         className='w-full h-full object-contain' />
                       </motion.div>
                   
-                  <motion.div whileTap={{scale:0.75}} className='w-10 h-10 rounded-full bg-red-600 flex items-center justify-center cursor-pointer hover:shadow-md' onClick={()=>setItems([...cartItems,item])}>
-                      <MdShoppingBasket className='text-white'/>
+                  <motion.div whileTap={{scale:0.75}} className='w-10 h-10 rounded-full bg-red-600 flex items-center justify-center cursor-pointer hover:shadow-md' onClick={()=>handleCart(item)}>
+                      <MdShoppingBasket className='text-white' />
                   </motion.div>
               </div>
               <div className='w-full flex flex-col gap-1 items-end justify-end'>
