@@ -47,7 +47,21 @@ const RawContainer = ({ flag, data, scrollValue }) => {
     }, [items])
     
     const handleCart = (item) => {
-        setItems([...cartItems,item])
+        let flag = false;
+
+        const newItems = cartItems.map((elm) => {
+           let newObj = {};
+            if (elm.id === item.id) {
+                elm.qty += 1;
+                flag = true;
+            }
+            newObj = elm;
+            return newObj;
+        })
+        if (flag === false) {
+            newItems.push(item);
+        }
+        setItems(newItems)
     }
     return (
         
