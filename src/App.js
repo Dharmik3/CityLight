@@ -5,6 +5,7 @@ import {AnimatePresence, FlatTree} from 'framer-motion'
 import { useStateValue } from "./context/StateProvider";
 import { getAllFoodItems } from "./utils/FirebaseFunctions";
 import { actionType } from "./context/reducer";
+import StripeContainer from "./components/StripeContainer";
 
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={ <MainContainer/>} />
                     <Route path="/createItem" element={ <CreateContainer/>} />
+                    <Route path="/payment" element={ <StripeContainer/>} />
                 </Routes>
             </main>
         </div>

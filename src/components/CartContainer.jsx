@@ -8,6 +8,7 @@ import EmptyCart from '../img/emptyCart.svg'
 import CartItem from './CartItem';
 import { fetchCart } from '../utils/fetchLocalStorageData';
 import { deleteUserCart } from '../utils/FirebaseFunctions';
+import {Link} from 'react-router-dom'
 
 
 const CartContainer = () => {
@@ -115,14 +116,16 @@ const CartContainer = () => {
               </p>
             </div>
             {user ? (
-              <motion.button
-                whileTap={{ scale: 0.8 }}
-                type="button"
-                className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg transition-all duration-150 ease-out"
-                // onClick={() => processPayment(tot + 40)}
-              >
-                Check Out
-              </motion.button>
+              <Link to="/payment" className='w-full'>
+                <motion.button
+                  whileTap={{ scale: 0.8 }}
+                  type="button"
+                  className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg transition-all duration-150 ease-out"
+                  // onClick={() => processPayment(tot + 40)}
+                >
+                  Check Out
+                </motion.button>
+              </Link>
             ) : (
               <motion.button
                 whileTap={{ scale: 0.8 }}
