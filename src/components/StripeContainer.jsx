@@ -39,7 +39,7 @@ export default function StripeContainer() {
     fetch("http://localhost:4000/payment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
+      body: JSON.stringify({ items: [{ id: "xl-tshirt" }]}),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
@@ -54,7 +54,10 @@ export default function StripeContainer() {
   };
 
   return (
-    <div className="App">
+    <div
+      className="App w-full h-[87vh] flex justify-center items-center p-4"
+      
+    >
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <PaymentForm />
