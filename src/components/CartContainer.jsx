@@ -13,7 +13,7 @@ import {Link} from 'react-router-dom'
 
 const CartContainer = () => {
     
-    const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
+    const [{ cartShow, cartItems, user ,total}, dispatch] = useStateValue();
     const [flag, setFlag] = useState(1);
   const [tot, setTot] = useState(0);
     const showCart = () => {
@@ -42,7 +42,11 @@ const CartContainer = () => {
         let totalPrice = cartItems.reduce(function (accumulator, item) {
             return accumulator + item.qty * item.price
         }, 0)
-        setTot(totalPrice);
+      setTot(totalPrice);
+      dispatch({
+        type: actionType.SET_TOTAL,
+        total:tot+40
+      });
     }, [tot, flag])
     
    
