@@ -14,7 +14,7 @@ import { heroData } from '../utils/data'
                   </div>
               </div>
               <p className='text-[2.5rem] font-bold tracking-wide text-headingColor   lg:text-[4.3rem]'>The Fastest Delivery in <span className='text-orange-600 text-[3rem] lg:text-[5rem]'>Your City</span></p>
-                 <p className='text-base text-textColor text-center md:text-left md:w-[80%]'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident sed quisquam sapiente ullam nulla vel, quam totam eum a possimus, doloremque accusantium doloribus numquam perferendis porro itaque dolores iusto ratione.</p>
+                 <p className='text-base text-textColor text-center md:text-left md:w-[80%]'>It takes hustle and heart to make it in the restaurant industry.At CityLight we get that and we're here to help.Enjoy your food only in few clicks.What are you waiting for order now.</p>
                  <a href="#menu">
                      <button type='button' className='bg-gradient-to-br from-orange-400 to-orange-500 w-full px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-100 ease-in-out md:w-auto'>Order Now</button>
                      </a>
