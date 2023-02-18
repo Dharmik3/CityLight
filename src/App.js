@@ -6,6 +6,7 @@ import { useStateValue } from "./context/StateProvider";
 import { getAllFoodItems } from "./utils/FirebaseFunctions";
 import { actionType } from "./context/reducer";
 import StripeContainer from "./components/StripeContainer";
+import Bill from "./components/Invoice";
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
                     <Route path="/" element={ <MainContainer/>} />
                     <Route path="/createItem" element={ <CreateContainer/>} />
                     <Route path="/payment" element={ <StripeContainer/>} />
+                    <Route path="/bill" element={ <Bill/>} />
                 </Routes>
             </main>
         </div>
