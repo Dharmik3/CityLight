@@ -5,6 +5,9 @@ import { firestore } from "../firebase.config"
 export const saveItem = async (data) => {
     await setDoc(doc(firestore, 'foodItems', `${Date.now()}`), data, { merge: true });
 }
+export const saveAddress = async (data) => {
+    await setDoc(doc(firestore, 'address', `${Date.now()}`), data, { merge: true });
+}
 export const saveUserCart = async (data) => {
     await setDoc(doc(firestore, 'userCarts', `${data.id}`), data, { merge: true });
 }

@@ -120,7 +120,7 @@ const CartContainer = () => {
               </p>
             </div>
             {user ? (
-              <Link to="/payment" className='w-full'>
+              <Link to="/address" className='w-full'>
                 <motion.button
                   whileTap={{ scale: 0.8 }}
                   type="button"

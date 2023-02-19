@@ -7,6 +7,7 @@ import { getAllFoodItems } from "./utils/FirebaseFunctions";
 import { actionType } from "./context/reducer";
 import StripeContainer from "./components/StripeContainer";
 import Bill from "./components/Invoice";
+import Address from "./components/Address";
 
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
                     <Route path="/createItem" element={ <CreateContainer/>} />
                     <Route path="/payment" element={ <StripeContainer/>} />
                     <Route path="/bill" element={ <Bill/>} />
+                    <Route path="/address" element={ <Address/>} />
                 </Routes>
             </main>
         </div>
