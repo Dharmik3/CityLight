@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { PDFViewer } from "@react-pdf/renderer";
+import { PDFViewer,PDFDownloadLink } from "@react-pdf/renderer";
 import Invoice from "./report/Invoice";
 import { useStateValue } from "../context/StateProvider";
 // import invoiceData from "./data/invoice-data";
@@ -35,12 +35,23 @@ const Bill = () => {
     due_date: "2019-10-12",
     items,
   };
-
+     const fileName = "Invoice.pdf";
   return (
+ 
     <div>
-      <PDFViewer width="1000" height="600" className="app">
+      <PDFViewer width="1000" height="600" className="app" fileName={fileName}>
         <Invoice invoice={invoiceData} />
       </PDFViewer>
+      <div className='download-link'>
+        <PDFDownloadLink
+          document={<Invoice invoice={invoiceData} />}
+          fileName={fileName}
+        >
+          {({ blob, url, loading, error }) =>
+            loading ? "Loading..." : "Download Invoice"
+          }
+        </PDFDownloadLink>
+    </div>
     </div>
   );
 }

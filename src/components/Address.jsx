@@ -138,7 +138,8 @@ const Address = () => {
               type="tel"
               required
               placeholder="Mobile Number"
-              pattern="[0-9]{10}"
+                          pattern="[0-9]{10}"
+                          maxLength="10"
               className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
