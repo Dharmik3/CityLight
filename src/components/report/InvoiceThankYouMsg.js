@@ -5,7 +5,9 @@ const styles = StyleSheet.create({
 
     titleContainer: {
         flexDirection: 'row',
-        marginTop: 12
+        marginTop: 12,
+        alignItems: 'center',
+        justifyContent:'center'
     },
     reportTitle: {
         fontSize: 12,
@@ -17,7 +19,7 @@ const styles = StyleSheet.create({
 
 const InvoiceThankYouMsg = () => (
     <View style={styles.titleContainer}>
-        <Text style={styles.reportTitle}>Thank you for your business</Text>
+        <Text style={styles.reportTitle}>*** :) ***</Text>
     </View>
 );
 
