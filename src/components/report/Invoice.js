@@ -31,19 +31,22 @@ const styles = StyleSheet.create({
     }
 });
 
-const Invoice = ({ invoice }) => (
-    <Document>
-        <Page size="A4" style={styles.page}>
-            <View style={styles.view}>
-            <Image style={styles.logo} src={logo} />
-            <InvoiceTitle title='CityLight' />
-            </View>
-            <InvoiceNo invoice={invoice} />
-            <BillTo invoice={invoice} />
-            <InvoiceItemsTable invoice={invoice} />
-            <InvoiceThankYouMsg />
-        </Page>
-    </Document>
-);
+const Invoice = ({ invoice }) => 
+    
+    (
+        <Document>
+            <Page size="A4" style={styles.page}>
+                <View style={styles.view}>
+                    <Image style={styles.logo} src={logo} />
+                    <InvoiceTitle title='CityLight' />
+                </View>
+                <InvoiceNo invoice={invoice} />
+                <BillTo invoice={invoice} />
+                <InvoiceItemsTable invoice={invoice} />
+                <InvoiceThankYouMsg />
+            </Page>
+        </Document>
+    )
+;
 
 export default Invoice
