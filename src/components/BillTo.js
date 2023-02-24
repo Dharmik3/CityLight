@@ -1,7 +1,7 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
-import { useStateValue } from '../../context/StateProvider';
-import { getAddress } from '../../utils/FirebaseFunctions';
+import { useStateValue } from '../context/StateProvider';
+import { getAddress } from '../utils/FirebaseFunctions';
 const styles = StyleSheet.create({
     headerContainer: {
         marginTop: 36
@@ -14,19 +14,20 @@ const styles = StyleSheet.create({
 });
 
 
-const BillTo = ({ invoice }) =>
-{
+const BillTo = ({ invoice,user }) => {
+   
+    // console.log(cartItems);
     const [address, setAddress] = useState({});
-    const fetchAddress =async () => {
-        await getAddress("dharmikpatel.pepalla@gmail.com").then((add) => {
+    const fetchAddress = async () => {
+        await getAddress(user.email).then((add) => {
             setAddress(add)
         });
     }
-     useEffect(() => {
+    useEffect(() => {
         fetchAddress()
     }, [])
-  
-    return(address?
+
+    return (
         <View style={styles.headerContainer}>
             <Text style={styles.billTo}>Bill To:</Text>
             <Text>{address.name}</Text>
@@ -34,10 +35,10 @@ const BillTo = ({ invoice }) =>
             <Text>{address.city}</Text>
             <Text>{address.mobile}</Text>
             <Text>{address.email}</Text>
-        </View> : <Text>Loading...</Text>
+        </View>
     )
 }
-   
+
 
 
 export default BillTo;

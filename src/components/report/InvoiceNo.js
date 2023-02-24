@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import { InvoiceNumber } from 'invoice-number'
 
 const styles = StyleSheet.create({
     invoiceNoContainer: {
@@ -25,8 +26,8 @@ const styles = StyleSheet.create({
 const InvoiceNo = ({ invoice }) => (
     <Fragment>
         <View style={styles.invoiceNoContainer}>
-            <Text style={styles.label}>Invoice No:</Text>
-            <Text style={styles.invoiceDate}>{invoice.invoice_no}</Text>
+            <Text style={styles.label}>Invoice No: </Text>
+            <Text style={styles.invoiceDate}>{1 + Math.floor(Math.random() * 999999999)}</Text>
         </View >
         <View style={styles.invoiceDateContainer}>
             <Text style={styles.label}>Date: </Text>
