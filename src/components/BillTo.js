@@ -15,8 +15,6 @@ const styles = StyleSheet.create({
 
 
 const BillTo = ({ invoice,user }) => {
-   
-    // console.log(cartItems);
     const [address, setAddress] = useState({});
     const fetchAddress = async () => {
         await getAddress(user.email).then((add) => {

@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FlatTree, motion } from "framer-motion";
-import {
-  MdAttachMoney,
-  MdCloudUpload,
-  MdDelete,
-  MdFastfood,
-  MdFoodBank,
-} from "react-icons/md";
 import { categories,states } from "../utils/data";
 import Loader from "./Loader";
 
 
-import { getAllFoodItems, saveItem ,saveAddress} from "../utils/FirebaseFunctions";
+import { saveAddress} from "../utils/FirebaseFunctions";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 const Address = () => {

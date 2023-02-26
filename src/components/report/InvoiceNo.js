@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
-import { InvoiceNumber } from 'invoice-number'
+
 
 const styles = StyleSheet.create({
     invoiceNoContainer: {

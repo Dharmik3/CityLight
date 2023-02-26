@@ -21,8 +21,6 @@ const styles = StyleSheet.create({
     logo: {
         width: 74,
         height: 66,
-        // marginLeft: 'auto',
-        // marginRight: 'auto'
     },
     view: {
         display: 'flex',

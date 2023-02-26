@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 
 const InvoiceThankYouMsg = () => (
     <View style={styles.titleContainer}>
-        <Text style={styles.reportTitle}>*** :) ***</Text>
+        <Text style={styles.reportTitle}>*** Thank You ***</Text>
     </View>
 );
 
