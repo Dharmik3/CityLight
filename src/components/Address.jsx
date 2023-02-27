@@ -10,13 +10,13 @@ import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 const Address = () => {
     const navigate = useNavigate();
-    const [{ foodItems,user }, dispatch] = useStateValue();
+    const [{ foodItems,user,address }, dispatch] = useStateValue();
 
     const [name, setName] = useState("");
     const [mobile, setMobile] = useState("");
     const [pincode, setPincode] = useState("");
     const [locality, setLocality] = useState("");
-    const [address, setAddress] = useState("");
+    const [addresses, setAddresses] = useState("");
     const [city, setCity] = useState("");
     const [landmark, setLandmark] = useState("");
     const [alternateMobile, setAlternateMobile] = useState("");
@@ -56,7 +56,11 @@ const Address = () => {
           alternateMobile
         };
           console.log(data)
-        saveAddress(data);
+          saveAddress(data);
+          dispatch({
+              type: actionType.SET_ADDRESS,
+                  address: data
+          })
         setIsLoading(false);
         setFields(true);
         setMsg("Data uploaded successfully 😊");
@@ -131,8 +135,8 @@ const Address = () => {
               type="tel"
               required
               placeholder="Mobile Number"
-                          pattern="[0-9]{10}"
-                          maxLength="10"
+              pattern="[0-9]{10}"
+              maxLength="10"
               className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
@@ -169,9 +173,9 @@ const Address = () => {
           <input
             type="text"
             required
-            value={address}
+            value={addresses}
             onChange={(e) => {
-              setAddress(e.target.value);
+              setAddresses(e.target.value);
             }}
             placeholder="Address"
             className="w-full h-[60px] text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor "
@@ -219,7 +223,6 @@ const Address = () => {
             <input
               type="text"
               required
-            
               placeholder="Landmark (Optional)"
               className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor  focus:ring-blue-500 focus:border-blue-500"
               value={landmark}

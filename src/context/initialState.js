@@ -14,5 +14,6 @@ export const initialState = {
     foodItems: null,
     cartShow: false,
     cartItems: cartInfo,
-    total:0,
+    total: 0,
+    address:null,
 }
