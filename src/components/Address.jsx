@@ -33,7 +33,7 @@ const Address = () => {
   const saveDetails = () => {
     setIsLoading(true);
     try {
-      if (!name || !mobile || !address || !pincode || !locality||!city||!state) {
+      if (!name || !mobile || !addresses || !pincode || !locality||!city||!state) {
         setFields(true);
         setMsg("Required fields can't be empty");
         setAlertStatus("danger");
@@ -87,7 +87,7 @@ const Address = () => {
   const clearData = () => {
     setName("");
     setMobile("");
-    setAddress("");
+    setAddresses("");
     setPincode("");
       setLocality("");
       setState("-- select State --");
