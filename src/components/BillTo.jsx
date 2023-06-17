@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
-import { useStateValue } from '../context/StateProvider';
-import { getAddress } from '../utils/FirebaseFunctions';
+
+
 const styles = StyleSheet.create({
     headerContainer: {
         marginTop: 36
@@ -14,22 +14,16 @@ const styles = StyleSheet.create({
 });
 
 
-const BillTo = ({ invoice,user }) => {
-    const [address, setAddress] = useState({});
-    const fetchAddress = async () => {
-        await getAddress(user.email).then((add) => {
-            setAddress(add)
-        });
-    }
-    useEffect(() => {
-        fetchAddress()
-    }, [])
+const BillTo = () => {
+    const address = JSON.parse(localStorage.getItem('address'));
+   
+    console.log(address)
 
     return (
         <View style={styles.headerContainer}>
             <Text style={styles.billTo}>Bill To:</Text>
-            <Text>{address.name}</Text>
-            <Text>{address.address}</Text>
+            <Text>{address.name }</Text>
+            <Text>{address.addresses}</Text>
             <Text>{address.city}</Text>
             <Text>{address.mobile}</Text>
             <Text>{address.email}</Text>

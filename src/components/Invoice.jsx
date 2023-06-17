@@ -1,10 +1,9 @@
-import React, { Component, useEffect, useState } from "react";
-import { PDFViewer, PDFDownloadLink } from "@react-pdf/renderer";
+import React from "react";
+import {  PDFDownloadLink } from "@react-pdf/renderer";
 import Invoice from "./report/Invoice";
 import { useStateValue } from "../context/StateProvider";
 import { GiConfirmed } from "react-icons/gi";
 import { motion } from "framer-motion";
-import { fetchCart } from "../utils/fetchLocalStorageData";
 import { actionType } from "../context/reducer";
 // import invoiceData from "./data/invoice-data
 import { Link } from "react-router-dom";
@@ -12,7 +11,7 @@ import { Link } from "react-router-dom";
 
 
 const Bill = () => {
-  const [{ cartItems, user }, dispatch] = useStateValue();
+  const [{ cartItems, user },dispatch] = useStateValue();
   const fileName = "Invoice.pdf";
 // const handleClear = () => {
 //   localStorage.removeItem("cartItems");
@@ -35,7 +34,9 @@ const Bill = () => {
     trans_date: new Date().toLocaleString("en-IN", "Asia/Delhi"),
     items,
   };
-  
+
+
+   
   return (
     <div className="w-full h-[87vh] flex justify-center items-center flex-col">
       {/* <PDFViewer width="1000" height="600" className="app w-full" fileName={fileName}>

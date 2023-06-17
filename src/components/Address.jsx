@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FlatTree, motion } from "framer-motion";
-import { categories,states } from "../utils/data";
-import Loader from "./Loader";
-
-
+import {  motion } from "framer-motion";
+import {states } from "../utils/data";
 import { saveAddress} from "../utils/FirebaseFunctions";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
+
 const Address = () => {
     const navigate = useNavigate();
-    const [{ foodItems,user,address }, dispatch] = useStateValue();
+    const [{ user }, dispatch] = useStateValue();
 
     const [name, setName] = useState("");
     const [mobile, setMobile] = useState("");
@@ -42,24 +40,25 @@ const Address = () => {
           setIsLoading(false);
         }, 4000);
       } else {
-        const data = {
+        const address = {
             id: `${Date.now()}`,
             email:user.email,
           name,
           mobile,
             pincode,
             locality,
-            address,
+            addresses,
             city,
             state,
             landmark,
           alternateMobile
         };
-          console.log(data)
-          saveAddress(data);
+          console.log(address)
+        saveAddress(address);
+        localStorage.setItem("address", JSON.stringify(address));
           dispatch({
               type: actionType.SET_ADDRESS,
-                  address: data
+                  address
           })
         setIsLoading(false);
         setFields(true);

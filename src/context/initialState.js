@@ -15,5 +15,5 @@ export const initialState = {
     cartShow: false,
     cartItems: cartInfo,
     total: 0,
-    address:null,
+    address:{},
 }

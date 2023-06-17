@@ -13,7 +13,8 @@ import {Link} from 'react-router-dom'
 
 const CartContainer = () => {
     
-    const [{ cartShow, cartItems, user ,total}, dispatch] = useStateValue();
+  const [{ cartShow, cartItems, user,address }, dispatch] = useStateValue();
+  console.log(address);
     const [flag, setFlag] = useState(1);
   const [tot, setTot] = useState(0);
     const showCart = () => {

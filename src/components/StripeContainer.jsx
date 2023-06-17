@@ -33,16 +33,19 @@ const stripePromise = loadStripe(
 
 export default function StripeContainer() {
   const [clientSecret, setClientSecret] = useState("");
-  const [{ total }, dispatch] = useStateValue();
+  const [{ total }] = useStateValue();
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:4000/payment", {
+    fetch("https://stripe-paymet.onrender.com/payment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: [{ id: "xl-tshirt" }],total}),
+      body: JSON.stringify({ items: [{ id: "xl-tshirt" }], total }),
     })
       .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
+      .then((data) => {
+        console.log(data);
+        setClientSecret(data.clientSecret);
+      });
   }, []);
 
   const appearance = {
@@ -54,10 +57,7 @@ export default function StripeContainer() {
   };
 
   return (
-    <div
-      className="App w-full h-[87vh] flex justify-center items-center p-4"
-      
-    >
+    <div className="App w-full h-[87vh] flex justify-center items-center p-4">
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <PaymentForm />

@@ -1,83 +1,6 @@
-// import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-// import axios from "axios";
-// import React, { useState } from "react";
-
-// const CARD_OPTIONS = {
-//   iconStyle: "solid",
-//   style: {
-//     base: {
-//       iconColor: "#c4f0ff",
-//       color: "black",
-//       fontWeight: 500,
-//       fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
-//       fontSize: "16px",
-//       fontSmoothing: "antialiased",
-//       ":-webkit-autofill": { color: "#fce883" },
-//       "::placeholder": { color: "gray" },
-//     },
-//     invalid: {
-//       iconColor: "#ffc7ee",
-//       color: "#ffc7ee",
-//     },
-//   },
-// };
-
-// export default function PaymentForm() {
-//   const [success, setSuccess] = useState(false);
-//   const stripe = useStripe();
-//   const elements = useElements();
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     const { error, paymentMethod } = await stripe.createPaymentMethod({
-//       type: "card",
-//       card: elements.getElement(CardElement),
-//     });
-
-//     if (!error) {
-//       try {
-//         const { id } = paymentMethod;
-//         const response = await axios.post("http://localhost:4000/payment", {
-//           amount: 1000,
-//           id,
-//         });
-
-//         if (response.data.success) {
-//           console.log("Successful payment");
-//           setSuccess(true);
-//         }
-//       } catch (error) {
-//         console.log("Error", error);
-//       }
-//     } else {
-//       console.log(error.message);
-//     }
-//   };
-
-//   return (
-//     <>
-//       {!success ? (
-//         <form onSubmit={handleSubmit}>
-//           <fieldset className="FormGroup">
-//             <div className="FormRow">
-//               <CardElement options={CARD_OPTIONS} />
-//             </div>
-//           </fieldset>
-//           <button>Pay</button>
-//         </form>
-//       ) : (
-//         <div>
-//           <h2>
-//             Thank you for ordering from CityLight!
-//           </h2>
-//         </div>
-//       )}
-//     </>
-//   );
-// }
-
-
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useStateValue } from "../context/StateProvider";
 import {
   PaymentElement,
   LinkAuthenticationElement,
@@ -86,13 +9,14 @@ import {
 } from "@stripe/react-stripe-js";
 
 export default function PaymentForm() {
+  const navigate=useNavigate()
   const stripe = useStripe();
   const elements = useElements();
-
+const [{ address }] = useStateValue()
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
+console.log(address)
   useEffect(() => {
     if (!stripe) {
       return;
@@ -135,25 +59,30 @@ export default function PaymentForm() {
 
     setIsLoading(true);
 
-    const { error } = await stripe.confirmPayment({
+    const { paymentIntent, error } = await stripe.confirmPayment({
       elements,
-     
+
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/bill",
+        return_url: "https://restaurant-app-3.web.app/bill",
       },
+      redirect: "if_required",
     });
-
+    if (paymentIntent) {
+      setTimeout(()=>{},2000)
+      navigate('/bill')
+    }
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
     // your `return_url`. For some payment methods like iDEAL, your customer will
     // be redirected to an intermediate site first to authorize the payment, then
     // redirected to the `return_url`.
-    if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
-    } else {
-      setMessage("An unexpected error occurred.");
-    }
+    if (error)
+      if (error.type === "card_error" || error.type === "validation_error") {
+        setMessage(error.message);
+      } else {
+        setMessage("An unexpected error occurred.");
+      }
 
     setIsLoading(false);
   };
@@ -163,7 +92,7 @@ export default function PaymentForm() {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit} >
+    <form id="payment-form" onSubmit={handleSubmit}>
       <LinkAuthenticationElement
         id="link-authentication-element"
         onChange={(e) => setEmail(e.target.value)}
