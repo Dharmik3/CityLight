@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+# CityLight Restaurant App
+Welcome to the CityLight Restaurant App! This is a React project that allows users to explore food items, add them to the cart, make payments through the Stripe payment gateway, and generate invoices for their orders. The app utilizes Firebase for storing data related to food items, user information, and the user's cart.
+
+## Features
+* Login with Google
+* Explore food items
+* Add food items to cart
+* Make payment through Stripe
+* Generate PDF of invoice for order
+* Store data in Firebase
+
+## Technologies Used
+* React: A JavaScript library for building user interfaces.
+* Tailwind CSS: Styling framwork
+* Firebase Authentication: For user authentication using Google accounts.
+* Firebase Realtime Database(firestore): For storing food item data, user information, and cart details.
+* Stripe: A popular payment gateway that enables secure online payments.
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
