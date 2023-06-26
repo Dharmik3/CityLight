@@ -15,6 +15,8 @@ Welcome to the CityLight Restaurant App! This is a React project that allows use
 * Firebase Authentication: For user authentication using Google accounts.
 * Firebase Realtime Database(firestore): For storing food item data, user information, and cart details.
 * Stripe: A popular payment gateway that enables secure online payments.
+
+#### [Live Link](https://restaurant-app-3.web.app/)
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
