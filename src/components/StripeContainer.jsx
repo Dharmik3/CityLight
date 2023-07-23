@@ -19,7 +19,7 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-
+import Loader from './Loader';
 // import CheckoutForm from "./CheckoutForm";
 import "./App.css";
 import PaymentForm from "./PaymentForm";
@@ -34,18 +34,26 @@ const stripePromise = loadStripe(
 export default function StripeContainer() {
   const [clientSecret, setClientSecret] = useState("");
   const [{ total }] = useStateValue();
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("https://stripe-paymet.onrender.com/payment", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: [{ id: "xl-tshirt" }], total }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setClientSecret(data.clientSecret);
-      });
+    function makePayment() {
+      fetch("https://stripe-paymet.onrender.com/payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: [{ id: `${Date.now()}` }], total }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setClientSecret(data.clientSecret);
+        });
+    }
+
+    setIsLoading(true);
+    makePayment();
+    setIsLoading(false);
+    
   }, []);
 
   const appearance = {
@@ -55,14 +63,20 @@ export default function StripeContainer() {
     clientSecret,
     appearance,
   };
-
+  
   return (
-    <div className="App w-full h-[87vh] flex justify-center items-center p-4">
-      {clientSecret && (
-        <Elements options={options} stripe={stripePromise}>
-          <PaymentForm />
-        </Elements>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="App w-full h-[87vh] flex justify-center items-center p-4">
+          {clientSecret && (
+            <Elements options={options} stripe={stripePromise}>
+              <PaymentForm />
+            </Elements>
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 }
