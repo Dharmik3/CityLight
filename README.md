@@ -17,6 +17,15 @@ Welcome to the CityLight Restaurant App! This is a React project that allows use
 * Stripe: A popular payment gateway that enables secure online payments.
 
 #### [Live Link](https://restaurant-app-3.web.app/)
+
+## Snapshots
+<img width="1200" alt="citylight hero" src="https://github.com/Dharmik3/CityLight/blob/main/snapshots/ss1.jpeg">
+
+<img width="1200" alt="citylight fruit section" src="https://github.com/Dharmik3/CityLight/blob/main/snapshots/ss2.jpeg">
+<img width="1200" alt="checkout" src="https://github.com/Dharmik3/CityLight/blob/main/snapshots/ss3.jpeg">
+<img width="1200" alt="address" src="https://github.com/Dharmik3/CityLight/blob/main/snapshots/ss4.jpeg">
+<img width="1200" alt="stripe card payment" src="https://github.com/Dharmik3/CityLight/blob/main/snapshots/ss5.jpeg">
+<img width="1200" alt="invoice" src="https://github.com/Dharmik3/CityLight/blob/main/snapshots/ss6.jpeg">
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
