@@ -26,6 +26,7 @@ Welcome to the CityLight Restaurant App! This is a React project that allows use
 <img width="1200" alt="address" src="https://github.com/Dharmik3/CityLight/blob/main/snapshots/ss4.jpeg">
 <img width="1200" alt="stripe card payment" src="https://github.com/Dharmik3/CityLight/blob/main/snapshots/ss5.jpeg">
 <img width="1200" alt="invoice" src="https://github.com/Dharmik3/CityLight/blob/main/snapshots/ss6.jpeg">
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
