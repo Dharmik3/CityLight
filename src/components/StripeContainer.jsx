@@ -50,9 +50,9 @@ export default function StripeContainer() {
         });
     }
 
-    setIsLoading(true);
+    
     makePayment();
-    setIsLoading(false);
+   
     
   }, []);
 
